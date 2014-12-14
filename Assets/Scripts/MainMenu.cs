@@ -3,21 +3,24 @@ using System.Collections;
 // ahaaa!
 using UnityEngine.UI;
 
-public class SubtitleSelector : MonoBehaviour, ICustomMessageTarget 
+public class MainMenu : MonoBehaviour, ICustomMessageTarget 
 {
 
 	public string[] phrases;
 
+	public Text subtitle;
+
 	// Use this for initialization
 	void Start () 
 	{
+		// test
 		selectSubtitle ();
 	}
 
 	public void OnStartGame () 
 	{
 		// test
-		selectSubtitle ();
+		Application.LoadLevel (Application.loadedLevel+1);
 	}
 
 	void selectSubtitle ()
@@ -30,8 +33,7 @@ public class SubtitleSelector : MonoBehaviour, ICustomMessageTarget
 			while (phrase2 == phrase1) {
 				phrase2 = Random.Range (0, phrases.Length);
 			}
-			Text textComponent = GetComponent<Text>();
-			textComponent.text = "Memoirs of " + phrases[phrase1] + " and " + phrases[phrase2];
+			subtitle.text = "Memoirs of " + phrases[phrase1] + " and " + phrases[phrase2];
 		}
 	}
 }
